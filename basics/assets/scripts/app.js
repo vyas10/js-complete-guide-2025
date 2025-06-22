@@ -27,45 +27,65 @@ function writeToLog(operationIdentifier, prevResult, operationNumber, newResult)
     console.log(logEntries); // Log the entries to the console
 }
 
+function calculateResult(calculationType) {
+    const enteredNumber = getUserInput();
+    if (
+        calculationType !== "ADD"
+        && calculationType !== "SUBTRACT"
+        && calculationType !== "MULTIPLY"
+        && calculationType !== "DIVIDE"
+        || enteredNumber === 0) {
+        return; // Exit if the calculation type is invalid
+    }
+    if (calculationType === "ADD"
+        || calculationType === "SUBTRACT"
+        || calculationType === "MULTIPLY"
+        || calculationType === "DIVIDE") {
+        const initalResult = currentResult;
+        let mathOperator;
+        if (calculationType === "ADD") {
+            currentResult += enteredNumber;
+            mathOperator = "+";
+        } else if (calculationType === "SUBTRACT") {
+            currentResult -= enteredNumber;
+            mathOperator = "-";
+        } else if (calculationType === "MULTIPLY") {
+            currentResult *= enteredNumber;
+            mathOperator = "*";
+        } else if (calculationType === "DIVIDE") {
+            currentResult /= enteredNumber;
+            mathOperator = "/";
+        }
+        createAndWriteOutput(mathOperator, initalResult, enteredNumber);
+        writeToLog(calculationType, initalResult, enteredNumber, currentResult);
+    }
+}
 // Adds the entered number to the current result
 function add() {
-    const enteredNumber = getUserInput();
-    const initalResult = currentResult;
-    currentResult += enteredNumber;
-    createAndWriteOutput("+", initalResult, enteredNumber);
-    writeToLog("ADD", initalResult, enteredNumber, currentResult);
-    // The log entry is created in the writeToLog function
+    calculateResult("ADD");
+    // Call the generic function for addition
 }
 
 // Subtracts the entered number from the current result
 function subtract() {
-    const enteredNumber = getUserInput();
-    const initalResult = currentResult;
-    currentResult -= enteredNumber;
-    createAndWriteOutput("-", initalResult, enteredNumber);
-    writeToLog("SUBTRACT", initalResult, enteredNumber, currentResult);
-    // The log entry is created in the writeToLog function
+    calculateResult("SUBTRACT");
+    // Call the generic function for subtraction
 }
 
 // Multiplies the current result by the entered number
 function multiply() {
-    const enteredNumber = getUserInput();
-    const initalResult = currentResult;
-    currentResult *= enteredNumber;
-    createAndWriteOutput("*", initalResult, enteredNumber);
-    writeToLog("MULTIPLY", initalResult, enteredNumber, currentResult);
-    // The log entry is created in the writeToLog function
+    calculateResult("MULTIPLY");
+    // Call the generic function for multiplication
 }
 
 // Divides the current result by the entered number
 function divide() {
-    const enteredNumber = getUserInput();
-    const initalResult = currentResult;
-    currentResult /= enteredNumber;
-    createAndWriteOutput("/", initalResult, enteredNumber);
-    writeToLog("DIVIDE", initalResult, enteredNumber, currentResult);
-    // The log entry is created in the writeToLog function
+    calculateResult("DIVIDE");
+    // Call the generic function for division
 }
+
+
+
 
 // Attach event listeners to the calculator buttons
 addBtn.addEventListener('click', add);
