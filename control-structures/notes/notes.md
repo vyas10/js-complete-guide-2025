@@ -19,3 +19,18 @@
 - `!!` is used to convert a value to a boolean.
 - `||` is the logical OR operator.
 - `&&` is the logical AND operator.
+
+## Note 5: For, ForOf, ForIn
+
+- `for` loops iterate over a range or collection.
+- `for...of` loops iterate over iterable objects like arrays.
+- `for...in` loops iterate over the keys of an object.
+
+## Note 6: What is Ecmascript & ES6?
+
+- ECMAScript is the standard (or official rulebook) that defines how the JavaScript language should work.
+- Think of ECMAScript as the specification (rulebook) that says what JavaScript can do and how it should behave.
+- It’s managed by a group called TC39 (Technical Committee 39).
+- ES6, also known as ECMAScript 2015, is the sixth edition of the Ecmascript standard.
+- It introduced many new features and improvements to JavaScript.
+- ES6 introduced new features like arrow functions, template literals, and destructuring.
